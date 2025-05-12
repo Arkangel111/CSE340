@@ -13,6 +13,11 @@ const static = require("./routes/static")
 const expressEjsLayouts = require("express-ejs-layouts")
 
 /* ***********************
+ * Static File Middleware 
+ *************************/
+app.use(express.static("public"))
+
+/* ***********************
  * View Engine and Templates
  *************************/
 app.set("view engine", "ejs")
