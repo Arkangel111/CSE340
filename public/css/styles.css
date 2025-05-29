@@ -197,3 +197,34 @@ nav ul li:hover {
   margin-bottom: 0.75rem;
   line-height: 1.4;
 }
+
+.vehicle-container {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.vehicle-image {
+  flex: 1 1 300px;
+}
+
+.vehicle-image img {
+  width: 100%;
+  height: auto;
+  max-width: 500px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.vehicle-info {
+  flex: 1 1 300px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.vehicle-info h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}

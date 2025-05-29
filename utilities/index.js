@@ -67,3 +67,24 @@ Util.buildClassificationGrid = async function(data){
   return grid
 }
 
+
+function buildDetailHTML(vehicle) {
+  if (!vehicle) return "<p>Vehicle not found</p>";
+
+  const formatter = new Intl.NumberFormat("en-US");
+  const price = `$${formatter.format(vehicle.inv_price)}`;
+  const mileage = `${formatter.format(vehicle.inv_miles)} miles`;
+
+  return `
+    <div class="vehicle-detail">
+      <img src="${vehicle.inv_image}" alt="Image of ${vehicle.inv_make} ${vehicle.inv_model}">
+      <h2>${vehicle.inv_year} ${vehicle.inv_make} ${vehicle.inv_model}</h2>
+      <ul>
+        <li><strong>Price:</strong> ${price}</li>
+        <li><strong>Mileage:</strong> ${mileage}</li>
+        <li><strong>Color:</strong> ${vehicle.inv_color}</li>
+      </ul>
+      <p>${vehicle.inv_description}</p>
+    </div>
+  `;
+}

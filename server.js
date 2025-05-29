@@ -14,6 +14,7 @@ const expressEjsLayouts = require("express-ejs-layouts")
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
 const utilities = require("./utilities/")
+// const errorRouter = require('./routes/errorRoute')
 
 /* ***********************
  * Static File Middleware 
@@ -25,12 +26,14 @@ app.use(express.static("public"))
  *************************/
 app.set("view engine", "ejs")
 app.use(expressLayouts)
-app.set("layout", "./layouts/layout") // not at views root
+app.set("layout", "./layouts/layout")
+
 
 /* ***********************
  * Routes
  *************************/
 app.use(static)
+// app.use('/account', accountRouter);
 
 // Index route
 app.get("/", utilities.handleErrors(baseController.buildHome))
@@ -42,6 +45,9 @@ app.use("/inv", inventoryRoute)
 app.use(async (req, res, next) => {
   next({status: 404, message: 'Sorry, we appear to have lost that page.'})
 })
+
+// error route
+// app.use('/error', errorRouter)
 
 /* ***********************
 * Express Error Handler
@@ -58,6 +64,15 @@ app.use(async (err, req, res, next) => {
   })
 })
 
+app.use((err, req, res, next) => {
+  console.error("Global error handler:", err);
+  res.status(err.status || 500);
+  res.render('error', {
+    title: "Error",
+    message: err.message,
+    error: process.env.NODE_ENV === 'development' ? err : {}, // Show stack only in dev
+  });
+});
 
 /* ***********************
  * Local Server Information

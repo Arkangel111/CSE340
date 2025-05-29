@@ -42,5 +42,9 @@
 
 }
 
-
+@media (max-width: 768px) {
+  .vehicle-container {
+    flex-direction: column;
+  }
+}
 
