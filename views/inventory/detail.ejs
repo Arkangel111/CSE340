@@ -1,0 +1,18 @@
+
+<main class="vehicle-detail">
+  <h1><%= title %></h1>
+
+  <section class="vehicle-container">
+    <div class="vehicle-image">
+      <img src="<%= vehicleHtml.image %>" alt="Image of <%= title %>">
+    </div>
+
+    <div class="vehicle-info">
+      <h2><%= vehicleHtml.year %> <%= vehicleHtml.make %> <%= vehicleHtml.model %></h2>
+      <p><strong>Price:</strong> $<%= vehicleHtml.price.toLocaleString('en-US') %></p>
+      <p><strong>Mileage:</strong> <%= vehicleHtml.miles.toLocaleString('en-US') %> miles</p>
+      <p><strong>Color:</strong> <%= vehicleHtml.color %></p>
+      <p><strong>Description:</strong> <%= vehicleHtml.description %></p>
+    </div>
+  </section>
+</main>
